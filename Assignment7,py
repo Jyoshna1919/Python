@@ -1,5 +1,10 @@
 #Write a program to create a calculator using functions (sum,sub,mul,div)
 
+import email
+from os import name
+from pickle import EMPTY_DICT
+
+
 class calculator:
     def add(self, a, b):
         return a + b
@@ -43,6 +48,69 @@ while True:
 
     else:
         print("invalid input")
+
+
+
+#Write a program to enter employee details and also filter the stored employee details with name and empid and designation and email.
+class Employee:
+    def _init_(self, empid, name, designation, email):
+        self.empid = empid
+        self.name = name
+        self.designation = designation
+        self.email = email
+
+def add_employee():
+    empid = input("01946: ")
+    name = input("jyoshna: ")
+    designation = input("software developer: ")
+    email = input("jyoshnamarolix@gmail.com: ")
+    return Employee(empid, name, designation, email)
+
+def filter_employee(employee_list, key, value):
+    filtered_employees = [emp for emp in employee_list if getattr(emp, key) == value]
+    return filtered_employees
+
+def main():
+    employees = []
+
+    while True:
+        print("\n1. Add Employee\n2. Filter Employees\n3. Exit")
+        choice = input("Enter your choice (1/2/3): ")
+
+        if choice == '1':
+            new_employee = add_employee()
+            employees.append(new_employee)
+            print("Employee added successfully!")
+
+        elif choice == '2':
+            print("\nFilter Employees by:")
+            print("1. Name\n2. Employee ID\n3. Designation\n4. Email")
+            filter_choice = input("Enter your choice (1/2/3/4): ")
+
+            if filter_choice in ['1', '2', '3', '4']:
+                key = {'1': 'jyoshna', '2': '01946', '3': 'software developer', '4': 'jyoshnamarolix@gmail.com'}[filter_choice]
+                value = input(f"Enter the {key} to filter: ")
+                result = filter_employee(employees, key, value)
+
+                if result:
+                    print("\nFiltered Employees:")
+                    for emp in result:
+                        print(f"{emp.empid}: {emp.jyoshna}, {emp.software developer}, {emp.jyoshnamarolix2gmail.com}")
+                else:
+                    print("No matching employees found.")
+
+            else:
+                print("Invalid choice for filtering.")
+
+        elif choice == '3':
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if _name_ == "_main_":
+    main()  
 
 
 
